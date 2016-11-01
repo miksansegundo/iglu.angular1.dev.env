@@ -1,9 +1,12 @@
 var path = require('path')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
+var WebpackBrowserPlugin = require('webpack-browser-plugin')
 const webpack = require('webpack')
 
 module.exports = {
   context: __dirname,
+  cache: false,
+  devtool: 'eval-source-map',
   entry: {
     app: './src/app/app.module.js'
   },
@@ -13,11 +16,6 @@ module.exports = {
     sourceMapFilename: '[name].map',
     chunkFilename: '[id].chunk.js',
     publicPath: ''
-  },
-  stats: {
-    colors: true,
-    reasons: true,
-    chunks: true
   },
   module: {
     loaders: [
@@ -35,7 +33,7 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        loaders: ['ng-annotate', 'babel'],
+        loaders: ['ng-annotate', 'babel-loader'],
         include: path.resolve('src')
       },
       {
@@ -44,20 +42,18 @@ module.exports = {
       },
       {
         test: /\.html$/,
-        loader: 'raw'
+        loader: 'raw!html-minify'
       }
     ]
   },
   resolveLoader: {
     modules: [path.resolve(__dirname, 'src'), 'node_modules'],
-    extensions: ['.js', '.jsx', '.json']
+    extensions: ['.js', '.json']
   },
   plugins: [
     new webpack.LoaderOptionsPlugin({
-      options: {
-        standard: {
-          parser: 'babel-eslint'
-        }
+      'html-minify-loader': {
+        minifyCSS: true
       }
     }),
     new webpack.LoaderOptionsPlugin({
@@ -92,18 +88,19 @@ module.exports = {
     new HtmlWebpackPlugin({
       inject: 'body',
       hash: true,
-      filename: 'index.html',
       template: 'src/index.html'
     }),
     new webpack.EvalSourceMapDevToolPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
+    new WebpackBrowserPlugin(),
     new webpack.optimize.OccurrenceOrderPlugin()
-    // new webpack.optimize.DedupePlugin(), // Avoid duplication in libs
-   // new webpack.optimize.UglifyJsPlugin() // Optimize code
+    // new webpack.optimize.UglifyJsPlugin() // Optimize code
   ],
-  devtool: 'eval-source-map',
   devServer: {
-    stats: 'minimal'
+    noInfo: true,
+    stats: 'minimal',
+    compress: false,
+    historyApiFallback: true,
+    port: 8080
   }
 }
