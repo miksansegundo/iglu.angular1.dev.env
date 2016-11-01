@@ -16,7 +16,7 @@ const headerComponent = {
       this.HeaderService.fetch((data) => {
         console.log('Header Data Requested', data)
         this.state.loaded = true
-        this.state.data = data
+        this.state.data = window.angular.copy(data)
       })
     }
     $onChanges (changes) {
@@ -26,6 +26,7 @@ const headerComponent = {
     }
     $onDestroy () {
       console.log('Header Destroyed')
+      // Clean $postLink DOM event listeners
     }
     setView (view) {
       this.view = view

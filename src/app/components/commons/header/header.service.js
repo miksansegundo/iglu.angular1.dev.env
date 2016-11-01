@@ -19,6 +19,6 @@ export default class HeaderService {
           }
         ]
       })
-    }, 3000)
+    }, 2000)
   }
 }
