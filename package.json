@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "rimraf build && webpack -p --progress",
-    "deploy": "git subtree push --prefix build origin gh-pages",
+    "deploy": "git subtree push --prefix build origin gh-pages && show:deploy",
     "show:deploy": "open https://miksansegundo.github.io/iglu.angular1.dev.env",
-    "start": "webpack-dev-server --history-api-fallback --inline --progress",
+    "start": "webpack-dev-server",
     "lint": "npm run lint:js && npm run lint:css",
     "lint:js": "standard --fix --verbose | snazzy && echo 'Good Standad code :)' || echo 'Not good Standad code :('",
     "lint:css": "stylelint ./src/**/*.css"

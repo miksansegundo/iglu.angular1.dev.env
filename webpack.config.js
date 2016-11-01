@@ -100,6 +100,7 @@ module.exports = {
     noInfo: true,
     stats: 'minimal',
     compress: false,
+    inline: true,
     historyApiFallback: true,
     port: 8080
   }
