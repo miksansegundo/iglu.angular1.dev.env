@@ -37,7 +37,7 @@ const headerComponent = {
     <div class="${styles.root}">
         <h3>{{ $ctrl.state.data.title }}</h3>
         <nav>
-            <div ng-if="!$ctrl.state.data.menu">Fetching Data...</div>
+            <div ng-if="!$ctrl.state.data.menu">Fetching Data from Server...</div>
             <ul class="nav nav-pills">
                 <li ng-repeat="item in $ctrl.state.data.menu" ng-class="{'active': $ctrl.view === item.link}" ><a class="btn btn-default btn-sm" ng-click="$ctrl.setView(item.link)">{{ item.name }}</a></li>
             </ul>

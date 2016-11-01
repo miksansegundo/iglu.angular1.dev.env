@@ -3,7 +3,7 @@ const rootComponent = {
 
   },
   controller: function () {
-    this.view = 'table'
+    this.view = 'list'
     this.viewChange = function ($event) {
       this.view = $event.data
     }

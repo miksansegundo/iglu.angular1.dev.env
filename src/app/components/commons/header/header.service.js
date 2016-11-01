@@ -16,6 +16,10 @@ export default class HeaderService {
           {
             name: 'Table',
             link: 'table'
+          },
+          {
+            name: 'Other',
+            link: 'other'
           }
         ]
       })
