@@ -12,7 +12,7 @@ module.exports = {
     filename: '[name].bundle.js',
     sourceMapFilename: '[name].map',
     chunkFilename: '[id].chunk.js',
-    publicPath: '/'
+    publicPath: ''
   },
   stats: {
     colors: true,
@@ -65,7 +65,7 @@ module.exports = {
         context: __dirname,
         postcss (webpackInstance) {
           return [
-            //require('postcss-autoreset')(),
+            // require('postcss-autoreset')(),
             require('postcss-smart-import')({
               addDependencyTo: webpackInstance,
               root: __dirname,
@@ -98,7 +98,7 @@ module.exports = {
     new webpack.EvalSourceMapDevToolPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
-    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin()
     // new webpack.optimize.DedupePlugin(), // Avoid duplication in libs
    // new webpack.optimize.UglifyJsPlugin() // Optimize code
   ],

@@ -6,6 +6,7 @@
   "scripts": {
     "build": "rimraf build && webpack --bail --progress --profile && npm run server",
     "server": "http-server ./build -o -c",
+    "deploy": "git subtree push --prefix build origin gh-pages",
     "start": "webpack-dev-server --history-api-fallback --inline --progress",
     "lint": "npm run lint:js && npm run lint:css",
     "lint:js": "eslint src",
@@ -59,5 +60,10 @@
   },
   "dependencies": {
     "classnames": "^2.2.5"
+  },
+  "standard": {
+    "ignore": [
+      "/build/"
+    ]
   }
 }
