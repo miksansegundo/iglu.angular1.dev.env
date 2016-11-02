@@ -1,7 +1,10 @@
+
 .root {
+  composes: borderColorAnim comp from '../../commons.css';
   display: block;
-  border: 2px dashed #BBB;
-  background: #F9F9F9;
-  padding: 5px;
   margin-bottom: 10px;
+}
+
+.photo {
+  max-width: 100%;
 }

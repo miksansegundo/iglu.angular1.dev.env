@@ -1,7 +1,5 @@
 .root {
-  display: block;
-  border: 2px dashed #BBB;
-  background: #F9F9F9;
-  padding: 5px;
+  background: url('img/angular.svg') no-repeat 100% 0;
+  composes: borderColorAnim comp from '../../../commons.css';
   margin-bottom: 10px;
 }

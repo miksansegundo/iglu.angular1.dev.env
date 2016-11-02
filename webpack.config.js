@@ -1,12 +1,13 @@
-var path = require('path')
-var HtmlWebpackPlugin = require('html-webpack-plugin')
-var WebpackBrowserPlugin = require('webpack-browser-plugin')
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const WebpackBrowserPlugin = require('webpack-browser-plugin')
+var WebpackNotifierPlugin = require('webpack-notifier');
 const webpack = require('webpack')
 
 module.exports = {
   context: __dirname,
   cache: false,
-  devtool: 'eval-source-map',
+  devtool: 'cheap-module-source-map',
   entry: {
     app: './src/app/app.module.js'
   },
@@ -20,16 +21,12 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.json$/,
-        loader: 'json-loader'
+        test: /\.html$/,
+        loader: 'html!html-minify'
       },
       {
-        test: /\.css$/,
-        include: path.resolve('src'),
-        loaders: ['style-loader', {
-          loader: 'css-loader',
-          query: { modules: true, localIdentName: '[name]__[local]___[hash:base64:5]' }
-        }, 'postcss-loader']
+        test: /\.json$/,
+        loader: 'json-loader'
       },
       {
         test: /\.js$/,
@@ -37,12 +34,24 @@ module.exports = {
         include: path.resolve('src')
       },
       {
-        test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
-        loader: 'file'
+        test: /\.(woff|woff2|eot|ttf|svg#.*)$/,
+        loader: 'url-loader'
       },
       {
-        test: /\.html$/,
-        loader: 'raw!html-minify'
+        test: /\.(jpg)$/i,
+        loader: 'responsive'
+      },
+      {
+        test: /\.(svg|png|jpg)$/,
+        loader: 'url-loader?limit=100000!img?progressive=true'
+      },
+      {
+        test: /\.css$/,
+        // include: path.resolve('src'),
+        loaders: ['style-loader', {
+          loader: 'css-loader',
+          query: { modules: true, localIdentName: '[name]__[local]___[hash:base64:5]' }
+        }, 'postcss-loader']
       }
     ]
   },
@@ -52,25 +61,23 @@ module.exports = {
   },
   plugins: [
     new webpack.LoaderOptionsPlugin({
-      'html-minify-loader': {
-        minifyCSS: true
-      }
-    }),
-    new webpack.LoaderOptionsPlugin({
       options: {
-        context: __dirname,
+        'html-minify-loader': {
+          minifyCSS: true
+        },
+        responsiveLoader: {
+          sizes: [320, 640, 1024]
+        },
         postcss (webpackInstance) {
           return [
             // require('postcss-autoreset')(),
             require('postcss-smart-import')({
-              addDependencyTo: webpackInstance,
-              root: __dirname,
-              path: [path.join(__dirname, '../src')]
+              addDependencyTo: webpackInstance
             }),
             require('postcss-url')({
               url: 'inline' // or "rebase" or "copy"
             }),
-            require('precss')({ /* ...options */ }),
+            // require('precss')({ /* ...options */ }),
             require('postcss-cssnext')({
               features: {
                 rem: {
@@ -85,19 +92,18 @@ module.exports = {
         }
       }
     }),
+    // new IconfontWebpackPlugin(),
     new HtmlWebpackPlugin({
       inject: 'body',
       hash: true,
       template: 'src/index.html'
     }),
-    new webpack.EvalSourceMapDevToolPlugin(),
-    new webpack.NoErrorsPlugin(),
     new WebpackBrowserPlugin(),
-    new webpack.optimize.OccurrenceOrderPlugin()
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new WebpackNotifierPlugin()
     // new webpack.optimize.UglifyJsPlugin() // Optimize code
   ],
   devServer: {
-    noInfo: true,
     stats: 'minimal',
     compress: false,
     inline: true,
