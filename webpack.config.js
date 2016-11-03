@@ -68,7 +68,7 @@ module.exports = (env) => {
         names: ['polyfills', 'manifest']
       })),
       new HtmlWebpackPlugin({
-        cache: false,
+        cache: true,
         inject: 'head',
         template: 'index.html.ejs'
       }),

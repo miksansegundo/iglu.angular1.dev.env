@@ -4,9 +4,9 @@ import commons from './components/commons/commons.module'
 import components from './components/components.module'
 import app from './app.component'
 
-window.angular
+export default window.angular
   .module('app', [
     commons,
     components
   ])
-  .component('app', app)
+  .component('app', app).name
