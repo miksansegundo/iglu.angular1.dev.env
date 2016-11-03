@@ -17,7 +17,7 @@ module.exports = (env) => {
     devtool: ifProd('source-map', 'cheap-module-source-map'),
     entry: {
       app: './index.js',
-      vendor: ['picturefill']
+      vendor: ['picturefill', '../libs/object.watch.polyfill.js']
     },
     output: {
       path: resolve('build'),
