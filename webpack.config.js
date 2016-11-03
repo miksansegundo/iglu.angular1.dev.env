@@ -17,7 +17,7 @@ module.exports = (env) => {
     devtool: ifProd('source-map', 'cheap-module-source-map'),
     entry: {
       app: './index.js',
-      vendor: ['../libs/object.watch.polyfill.js']
+      polyfills: ['picturefill', '../libs/object.watch.polyfill.js']
     },
     output: {
       path: resolve('build'),
@@ -65,7 +65,7 @@ module.exports = (env) => {
     plugins: removeEmpty([
       ifProd(new ProgressBarPlugin()),
       ifProd(new webpack.optimize.CommonsChunkPlugin({
-        names: ['vendor', 'manifest']
+        names: ['polyfills', 'manifest']
       })),
       new HtmlWebpackPlugin({
         cache: false,
