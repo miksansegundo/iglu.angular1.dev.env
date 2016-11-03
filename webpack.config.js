@@ -14,7 +14,7 @@ module.exports = (env) => {
   const config = webpackValidator({
     context: resolve('src'),
     cache: false,
-    devtool: ifProd('source-map', 'eval'),
+    devtool: ifProd('source-map', 'cheap-module-source-map'),
     entry: {
       app: './index.js',
       vendor: ['picturefill']
@@ -29,7 +29,7 @@ module.exports = (env) => {
     module: {
       loaders: [
         {
-          test: /\.(html|html\.ejs$)$/,
+          test: /\.html$/,
           loader: 'html!html-minify'
         },
         {
