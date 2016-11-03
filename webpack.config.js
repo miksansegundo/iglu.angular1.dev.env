@@ -1,7 +1,8 @@
 const {resolve} = require('path')
-const ProgressBarPlugin = require('progress-bar-webpack-plugin')
+const WebpackShellPlugin = require('webpack-shell-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const WebpackBrowserPlugin = require('webpack-browser-plugin')
+const WebpackMd5Hash = require('webpack-md5-hash')
 const WebpackNotifierPlugin = require('webpack-notifier')
 const webpackValidator = require('webpack-validator')
 const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin')
@@ -17,13 +18,13 @@ module.exports = (env) => {
     devtool: ifProd('source-map', 'cheap-module-source-map'),
     entry: {
       app: './index.js',
-      polyfills: ['picturefill', '../libs/object.watch.polyfill.js']
+      polyfills: ['picturefill']
     },
     output: {
       path: resolve('build'),
       filename: ifProd('[name].bundle.[chunkhash].js', '[name].bundle.js'),
       sourceMapFilename: '[name].map',
-      chunkFilename: '[id].chunk.js',
+      chunkFilename: '[chunkhash].[id].chunk.js',
       publicPath: ''
     },
     module: {
@@ -63,7 +64,6 @@ module.exports = (env) => {
       ]
     },
     plugins: removeEmpty([
-      ifProd(new ProgressBarPlugin()),
       ifProd(new webpack.optimize.CommonsChunkPlugin({
         names: ['polyfills', 'manifest']
       })),
@@ -104,9 +104,11 @@ module.exports = (env) => {
           }
         }
       }),
+      new WebpackMd5Hash(),
       new WebpackBrowserPlugin(),
       new WebpackNotifierPlugin(),
-      // ifProd(new OfflinePlugin()),
+      ifProd(new WebpackShellPlugin({onBuildStart: ['npm run copy:ico'], onBuildEnd: ['npm run clean:files']})),
+      // new OfflinePlugin(),
       new webpack.DefinePlugin({
         'process.env': {
           NODE_ENV: ifProd('"production"', '"development"')
