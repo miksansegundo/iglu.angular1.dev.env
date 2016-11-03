@@ -8,7 +8,7 @@ const mainComponent = {
   },
   template: `
     <div class="${styles.root}">
-      <h4>Main component</h4>
+      <h4>Main component!</h4>
       <p>Main view: {{ $ctrl.data }}</p>
       <figure>
         <img src="${logo}" alt="Logo AngularJS in SVG format" />

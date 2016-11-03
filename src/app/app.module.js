@@ -1,4 +1,4 @@
-import 'picturefill'
+
 import '!style!css!postcss!./global.css'
 import commons from './components/commons/commons.module'
 import components from './components/components.module'

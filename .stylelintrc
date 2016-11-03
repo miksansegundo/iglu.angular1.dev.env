@@ -16,6 +16,12 @@
         ]
       }
     ],
-    "indentation": 2
+    "indentation": 2,
+    "declaration-block-no-redundant-longhand-properties": [
+      true,
+      {
+        "ignoreShorthands": ["/border/"]
+      }
+    ]
   }
 }
