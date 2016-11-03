@@ -90,7 +90,6 @@ module.exports = (env) => {
               require('postcss-url')({
                 url: 'inline' // or "rebase" or "copy"
               }),
-              // require('precss')({ /* ...options */ }),
               require('postcss-cssnext')({
                 features: {
                   rem: {
