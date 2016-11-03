@@ -29,7 +29,7 @@ module.exports = (env) => {
     module: {
       loaders: [
         {
-          test: /\.html$/,
+          test: /\.(html|html\.ejs$)$/,
           loader: 'html!html-minify'
         },
         {

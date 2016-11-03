@@ -6,6 +6,7 @@
   "scripts": {
     "build": "webpack --env.prod -p",
     "prebuild": "npm run clean:build && npm run copy:ico",
+    "postbuild": "rm -f ./build/manifest.* ./build/vendor.map",
     "build:dev": "webpack-dev-server --env.dev",
     "prebuild:dev": "npm run clean:build && npm run copy:ico",
     "clean:build": "rimraf build",
