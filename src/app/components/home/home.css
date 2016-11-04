@@ -1,0 +1,10 @@
+
+.home {
+  composes: borderColorAnim comp from '../../css/commons.css';
+  display: block;
+  margin-bottom: 10px;
+}
+
+.photo {
+  max-width: 100%;
+}

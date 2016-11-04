@@ -35,7 +35,7 @@ const headerComponent = {
     }
   },
   template: `
-    <div class="${styles.root}">
+    <div class="${styles.header}">
         <h3>{{ $ctrl.state.data.title }}</h3>
         <nav>
             <div ng-if="!$ctrl.state.data.menu">Fetching Data from Server...</div>

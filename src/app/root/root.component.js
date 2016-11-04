@@ -15,7 +15,8 @@ const appComponent = {
     <div class="${styles.root}">
       <p>App component: app.view = {{ $ctrl.view }}</p>
       <header view="$ctrl.view" view-change="$ctrl.viewChange($event)"></header>
-      <main data="$ctrl.view"></main>
+      <home data="$ctrl.view"></home>
+      <section-one data="$ctrl.view"></section-one>
     </div>
   `
 }

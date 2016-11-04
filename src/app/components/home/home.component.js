@@ -1,15 +1,15 @@
-import styles from './main.css'
+import styles from './home.css'
 import photo from './img/big.jpg'
 import logo from './img/angular.svg'
 
 // @TODO Components
 
-const mainComponent = {
+const homeComponent = {
   bindings: {
     data: '<'
   },
   template: `
-    <div class="${styles.root}">
+    <div class="${styles.home}">
       <h4>Main component</h4>
       <p>Main view: {{ $ctrl.data }}</p>
       <figure>
@@ -24,4 +24,4 @@ const mainComponent = {
   `
 }
 
-export default mainComponent
+export default homeComponent
