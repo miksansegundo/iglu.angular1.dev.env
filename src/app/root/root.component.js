@@ -1,5 +1,5 @@
 
-import styles from './app.css'
+import styles from './root.css'
 
 const appComponent = {
   bindings: {
@@ -13,7 +13,7 @@ const appComponent = {
   },
   template: `
     <div class="${styles.root}">
-      <p>App Component: app.view = {{ $ctrl.view }}</p>
+      <p>App component: app.view = {{ $ctrl.view }}</p>
       <header view="$ctrl.view" view-change="$ctrl.viewChange($event)"></header>
       <main data="$ctrl.view"></main>
     </div>

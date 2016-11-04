@@ -1,0 +1,4 @@
+.root {
+  composes: borderColorAnim comp from '../css/commons.css';
+  margin-top: 15px;
+}

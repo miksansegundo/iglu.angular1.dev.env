@@ -1,6 +1,6 @@
 
 // import {install as offlineInstall} from 'offline-plugin/runtime'
-import './app/bootstrap'
+import './app/app.bootstrap'
 
 if (process.env.NODE_ENV === 'production') {
 // offlineInstall()

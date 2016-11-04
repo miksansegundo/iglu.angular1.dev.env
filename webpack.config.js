@@ -18,7 +18,7 @@ module.exports = (env) => {
     devtool: ifProd('source-map', 'cheap-module-source-map'),
     entry: {
       app: './index.js',
-      polyfills: ['picturefill']
+      polyfills: ['picturefill', '../libs/vanilla.helpers.js']
     },
     output: {
       path: resolve('build'),
@@ -40,7 +40,8 @@ module.exports = (env) => {
         {
           test: /\.js$/,
           loaders: ['ng-annotate', 'babel-loader'],
-          include: resolve('src')
+          include: resolve('src'),
+          exclude: [/node_module/, /libs/]
         },
         {
           test: /\.(woff|woff2|eot|ttf|svg#.*)$/,

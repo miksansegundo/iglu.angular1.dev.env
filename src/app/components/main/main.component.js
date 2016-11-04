@@ -2,13 +2,15 @@ import styles from './main.css'
 import photo from './img/big.jpg'
 import logo from './img/angular.svg'
 
+// @TODO Components
+
 const mainComponent = {
   bindings: {
     data: '<'
   },
   template: `
     <div class="${styles.root}">
-      <h4>Main component!</h4>
+      <h4>Main component</h4>
       <p>Main view: {{ $ctrl.data }}</p>
       <figure>
         <img src="${logo}" alt="Logo AngularJS in SVG format" />

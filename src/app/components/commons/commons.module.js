@@ -7,4 +7,3 @@ export default window.angular
   ])
   .component('header', headerComponent)
   .service('HeaderService', HeaderService)
-  .name

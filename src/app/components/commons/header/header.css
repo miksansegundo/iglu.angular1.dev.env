@@ -1,5 +1,5 @@
 .root {
   background: url('img/angular.svg') no-repeat 100% 0;
-  composes: borderColorAnim comp from '../../../commons.css';
+  composes: borderColorAnim comp from '../../../css/commons.css';
   margin-bottom: 10px;
 }

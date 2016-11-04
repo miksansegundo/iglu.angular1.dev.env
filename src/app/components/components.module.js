@@ -6,4 +6,3 @@ export default window.angular
     // sub-modules
   ])
   .component('main', mainComponent)
-  .name
