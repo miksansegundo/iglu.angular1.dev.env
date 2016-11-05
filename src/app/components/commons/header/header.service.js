@@ -10,16 +10,16 @@ export default class HeaderService {
         title: 'Header component',
         menu: [
           {
-            name: 'List',
-            link: 'list'
+            name: 'Home',
+            link: 'home'
           },
           {
-            name: 'Table',
-            link: 'table'
+            name: 'Section 1',
+            link: 'section-one'
           },
           {
-            name: 'Other',
-            link: 'other'
+            name: 'Section 2',
+            link: 'section-two'
           }
         ]
       })

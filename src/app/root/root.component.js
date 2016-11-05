@@ -5,18 +5,26 @@ const appComponent = {
   bindings: {
 
   },
-  controller: function () {
-    this.view = 'list'
-    this.viewChange = function ($event) {
-      this.view = $event.data
+  controller: class RootCtrl {
+    constructor (AuthService) {
+      'ngInject'
+      this.state = {}
+      this.Auth = AuthService
+    }
+    $onInit () {
+      this.state.user = this.Auth.login()
+    }
+    onLogout () {
+      this.state.user = this.Auth.logout()
     }
   },
   template: `
     <div class="${styles.root}">
-      <p>App component: app.view = {{ $ctrl.view }}</p>
-      <header view="$ctrl.view" view-change="$ctrl.viewChange($event)"></header>
-      <home data="$ctrl.view"></home>
-      <section-one data="$ctrl.view"></section-one>
+      <header data="$ctrl.state" on-logout="$ctrl.onLogout($event)"></header>
+      <ui-view/>
+      <footer>
+          MIT 2016.
+      </footer>
     </div>
   `
 }
