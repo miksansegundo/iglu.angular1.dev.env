@@ -4,7 +4,8 @@ import styles from './header.css'
 const headerComponent = {
   bindings: {
     data: '<',
-    onLogout: '&'
+    onLogout: '&',
+    onLogin: '&'
   },
   controller: class HeaderCtrl {
     constructor (HeaderService, AuthService) {
@@ -31,7 +32,11 @@ const headerComponent = {
       // Clean $postLink DOM event listeners
     }
     logout () {
-      this.onLogout({ $event: {data: 'hola'} })
+      this.state.authData.pwd = ''
+      this.onLogout()
+    }
+    login () {
+      this.onLogin({ $event: this.state.authData })
     }
   },
   template: `
@@ -48,12 +53,20 @@ const headerComponent = {
             <a class="navbar-brand" href="/">{{ $ctrl.state.data.title }}</a>
           </div>
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <p class="navbar-text" ng-if="!$ctrl.state.loaded">Fetching menu-items...</p>
             <ul class="nav navbar-nav">
-              <li ng-repeat="item in $ctrl.state.data.menu" ui-sref="{{item.link}}" ui-sref-active="active" >
-                <a href="#" ng-click="$ctrl.action(item.link)">{{ item.name }}</a>
+              <li ng-repeat="item in $ctrl.state.data.menu" ui-sref-active="active">
+                <a ui-sref="{{ item.link }}">{{ item.name }}</a>
               </li>
             </ul>
-            <button type="button" class="btn btn-default navbar-btn navbar-right" ng-if="!$ctrl.data.user.token">Sign in</button>
+            <form class="navbar-form navbar-right" ng-if="!$ctrl.data.user.token" ng-submit="$ctrl.login($ctrl.authData)">
+              <div class="form-group">
+                <input required ng-model="$ctrl.state.authData.usr" type="text" class="form-control" placeholder="Username">
+                <input required ng-model="$ctrl.state.authData.pwd" type="password" class="form-control" placeholder="Password">
+              </div>
+              <button type="submit" class="btn btn-default">Sign in</button>
+            </form>
+            
             <div class="navbar-right" ng-if="$ctrl.data.user.token">
               <p class="navbar-text">Signed in as <a ui-sref="profile" class="navbar-link">{{ $ctrl.data.user.name }}</a></p>            
               <ul class="nav navbar-nav">

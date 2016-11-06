@@ -9,9 +9,9 @@ export default class AuthService {
     this.user = {}
   }
 
-  login (user, pass) {
+  login (loginData) {
     this.user = {
-      name: 'Mik',
+      name: loginData.usr,
       token: 'dfsdfdsf-dsffdfsd-fdsfdsfs'
     }
     return this.user
