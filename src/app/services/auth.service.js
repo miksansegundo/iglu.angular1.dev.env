@@ -5,7 +5,6 @@ export default class AuthService {
     this.$window = $window
     this.storage = this.$window.sessionStorage
     this.user = this.initUser()
-    this.isLogging = false
   }
   initUser () {
     return {
@@ -57,6 +56,8 @@ export default class AuthService {
       return this.$q.resolve(this.user)
     } else if (this.logging) {
       return this.logging
+    } else {
+      return this.user
     }
   }
   saveToken (token) {
@@ -66,7 +67,6 @@ export default class AuthService {
     this.storage.removeItem('user.token')
   }
   restoreSessionFromToken () {
-    debugger
     const tokenInSession = this.getToken()
     if (tokenInSession) {
       return this.$q.resolve(this.loginFromToken(tokenInSession))
