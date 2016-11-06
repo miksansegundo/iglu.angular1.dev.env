@@ -1,12 +1,11 @@
 
 import home from './home/home.component'
 import sectionOne from './section-one/section-one.component'
-/*
-import sectionOne from './section-one/section-one.component'
-<home data="$ctrl.view"></home>
-<section-one data="$ctrl.view"></section-one> */
+import profile from './profile/profile.component'
+
 export default window.angular
   .module('components', [
     home.name,
-    sectionOne.name
+    sectionOne.name,
+    profile.name
   ])

@@ -15,7 +15,7 @@ module.exports = (env) => {
   const config = webpackValidator({
     context: resolve('src'),
     cache: false,
-    devtool: ifProd('source-map', 'cheap-module-source-map'),
+    devtool: ifProd('source-map', 'eval-source-map'),
     entry: {
       app: './index.js',
       polyfills: ['picturefill', '../libs/vanilla.helpers.js']

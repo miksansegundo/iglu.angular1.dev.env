@@ -7,15 +7,16 @@ export default class HomeService {
     this.$q = $q
     this.data = null
   }
-  getData () {
+  getData (user) {
+    debugger
     // TODO: Add json-server
     // return this.$http.get('/api/todos').then(response => response.data)
     if (this.data) {
       console.log('Cached Home data fetched')
-      return this.$q.when(this.data)
+      return this.$q.resolve(this.data)
     } else {
       console.log('Fetching Home data...')
-      return new Promise((resolve, reject) => {
+      return this.$q((resolve, reject) => {
         setTimeout(_ => {
           resolve(
             {
@@ -39,7 +40,7 @@ export default class HomeService {
               ]
             }
           )
-        }, 3000)
+        }, 2000)
       }).then(response => {
         this.data = response
         return response
