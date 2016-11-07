@@ -1,9 +1,11 @@
 
 import styles from './header.css'
 import HeaderService from './header.service'
+import userSection from './user-section/user-section.component'
+import navigation from './navigation/navigation.component'
 
 export default window.angular
-  .module('header', ['user.section'])
+  .module('header', [userSection.name, navigation.name])
   .service('HeaderService', HeaderService)
   .component('header', {
     bindings: {
@@ -14,24 +16,9 @@ export default window.angular
         this.Auth = AuthService
         this.Header = HeaderService
         this.state = {
-          data: {
-            title: 'Header component',
-            menu: [
-              {
-                name: 'Home',
-                link: 'home'
-              },
-              {
-                name: 'Section 1',
-                link: 'section-one'
-              },
-              {
-                name: 'Section 2',
-                link: 'section-two'
-              }
-            ]
-          }
+          brand: 'Angular Component-based'
         }
+        this.state.menu = this.Header.getMenu()
       }
       $onInit () {
         console.log('Header Initialized')
@@ -63,15 +50,11 @@ export default window.angular
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="/">{{ $ctrl.state.data.title }}</a>
+              <a class="navbar-brand" href="/">{{ $ctrl.state.brand }}</a>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <ul class="nav navbar-nav">
-                <li ng-repeat="item in $ctrl.state.data.menu" ui-sref-active="active">
-                  <a ui-sref="{{ item.link }}">{{ item.name }}</a>
-                </li>
-              </ul>
-              <user user="$ctrl.state.user" on-logout="$ctrl.onLogout($event)" on-login="$ctrl.onLogin($event)"></user>
+              <navigation items="$ctrl.state.menu"></navigation>
+              <user-section user="$ctrl.state.user" on-logout="$ctrl.onLogout($event)" on-login="$ctrl.onLogin($event)"></user-section>
             </div>
           </div>
         </nav>

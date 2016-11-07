@@ -1,9 +1,8 @@
 import styles from './user-section.css'
 
-const name = 'user.section'
 export default window.angular
-  .module(name, [])
-  .component('user', {
+  .module('userSection', [])
+  .component('userSection', {
     bindings: {
       user: '<',
       onLogout: '&',
@@ -12,7 +11,13 @@ export default window.angular
     controller: class UserCtrl {
       constructor () {
         'ngInject'
-        this.state = {}
+        this.state = {
+          authData: {
+            usr: '',
+            pwd: ''
+          },
+          disableLogin: false
+        }
       }
       $onInit () {
         console.log('User Initialized')

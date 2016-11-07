@@ -18,7 +18,7 @@ const appComponent = {
     <div class="${styles.root}">
       <header></header>
       <ui-view>
-        <div class="well well-lg">Loading page...</div>
+        <div class="well well-lg">Fetching page content...</div>
       </ui-view>
       <footer>
           Miguel San Segundo - MIT 2016.

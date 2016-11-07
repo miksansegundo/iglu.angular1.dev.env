@@ -4,10 +4,7 @@ export default class AuthService {
     this.$q = $q
     this.$window = $window
     this.storage = this.$window.sessionStorage
-    this.user = this.initUser()
-  }
-  initUser () {
-    return {
+    this.user = {
       data: {
         token: ''
       }
@@ -25,7 +22,7 @@ export default class AuthService {
           name: loginData.usr,
           token: 'dfsdfdsf-dsffdfsd-fdsfdsfs'
         })
-      }, 1000)
+      }, 0 * 1000)
     }).then(response => {
       this.saveToken(response.token)
       this.user.data = response
@@ -40,7 +37,7 @@ export default class AuthService {
           name: 'Mik',
           token: 'dfsdfdsf-dsffdfsd-fdsfdsfs'
         })
-      }, 1000)
+      }, 0 * 1000)
     }).then(response => {
       this.user.data = response
       return this.user
