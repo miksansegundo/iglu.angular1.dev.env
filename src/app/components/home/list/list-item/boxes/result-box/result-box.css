@@ -1,0 +1,24 @@
+
+.accepted {
+  color: #3c763d;
+}
+
+.rejected {
+  color: #d9534f;
+}
+
+.label {
+  display: block;
+  font-size: 2.5rem;
+  height: 4.6rem;
+  line-height: 2.5rem;
+  margin-bottom: 11px;
+}
+
+.select {
+  margin-bottom: 5px;
+}
+
+.panel {
+  min-height: 159px;
+}

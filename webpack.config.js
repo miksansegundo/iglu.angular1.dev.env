@@ -6,6 +6,7 @@ const WebpackMd5Hash = require('webpack-md5-hash')
 const WebpackNotifierPlugin = require('webpack-notifier')
 const webpackValidator = require('webpack-validator')
 const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin')
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin')
 // const OfflinePlugin = require('offline-plugin')
 const webpack = require('webpack')
 const {getIfUtils, removeEmpty} = require('webpack-config-utils')
@@ -15,7 +16,7 @@ module.exports = (env) => {
   const config = webpackValidator({
     context: resolve('src'),
     cache: false,
-    devtool: ifProd('source-map', 'eval-source-map'),
+    devtool: ifProd('source-map', 'eval'),
     entry: {
       app: './index.js',
       polyfills: ['picturefill', '../libs/vanilla.helpers.js']
@@ -72,6 +73,9 @@ module.exports = (env) => {
         cache: true,
         inject: 'head',
         template: 'index.html.ejs'
+      }),
+      new ScriptExtHtmlWebpackPlugin({
+        defaultAttribute: 'defer'
       }),
       ifProd(new InlineManifestWebpackPlugin()),
       new webpack.LoaderOptionsPlugin({

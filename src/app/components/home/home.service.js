@@ -20,93 +20,10 @@ export default class HomeService {
           console.log('Home data fetched')
           resolve(
             {
-              list: [
-                {
-                  id: 1,
-                  name: 'Task Name',
-                  owner: 'Owner name',
-                  state: {
-                    code: 0,
-                    label: 'Pending',
-                    metrics: 0,
-                    build: 0,
-                    unitTest: 0,
-                    functionalTest: 0
-                  },
-                  time: Date.now()
-                },
-                {
-                  id: 2,
-                  name: 'Task Name',
-                  owner: 'Owner name',
-                  state: {
-                    code: 1,
-                    label: 'Running',
-                    metrics: 50,
-                    build: 100,
-                    unitTest: 80,
-                    functionalTest: 90
-                  },
-                  time: Date.now(),
-                  metrics: [
-                    {
-                      id: 0,
-                      name: 'Test',
-                      value: '64',
-                      arrow: 'up'
-                    },
-                    {
-                      id: 1,
-                      name: 'Maintainability',
-                      value: '53',
-                      arrow: 'up'
-                    },
-                    {
-                      id: 2,
-                      name: 'Security',
-                      value: '64',
-                      arrow: 'right'
-                    },
-                    {
-                      id: 3,
-                      name: 'Workmanship',
-                      value: '20',
-                      arrow: 'down'
-                    }
-                  ]
-                },
-                {
-                  id: 3,
-                  name: 'Task Name',
-                  owner: 'Owner name',
-                  state: {
-                    code: 2,
-                    label: 'Complete',
-                    metrics: 100,
-                    build: 100,
-                    unitTest: 100,
-                    functionalTest: 100
-                  },
-                  time: Date.now()
-                },
-                {
-                  id: 4,
-                  name: 'Task Name',
-                  owner: 'Owner name',
-                  state: {
-                    code: 3,
-                    label: 'Rejected',
-                    metrics: 100,
-                    build: 100,
-                    unitTest: 70,
-                    functionalTest: 40
-                  },
-                  time: Date.now()
-                }
-              ]
+              data: []
             }
           )
-        }, 0 * 1000)
+        }, 1 * 1000)
       }).then(response => {
         this.data = response
         return response

@@ -5,13 +5,13 @@ import userSection from './user-section/user-section.component'
 import navigation from './navigation/navigation.component'
 
 export default window.angular
-  .module('header', [userSection.name, navigation.name])
+  .module('header', [userSection.name, navigation.name, 'ui.router'])
   .service('HeaderService', HeaderService)
   .component('header', {
     bindings: {
     },
     controller: class HeaderCtrl {
-      constructor (HeaderService, AuthService) {
+      constructor (HeaderService, AuthService, $state) {
         'ngInject'
         this.Auth = AuthService
         this.Header = HeaderService
@@ -19,6 +19,7 @@ export default window.angular
           brand: 'Angular Component-based'
         }
         this.state.menu = this.Header.getMenu()
+        this.$state = $state
       }
       $onInit () {
         console.log('Header Initialized')
@@ -32,6 +33,7 @@ export default window.angular
       }
       onLogout () {
         this.Auth.logout()
+        this.$state.go('home')
       }
       onLogin ($event) {
         this.Auth.login($event).then(user => {

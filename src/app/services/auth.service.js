@@ -22,7 +22,7 @@ export default class AuthService {
           name: loginData.usr,
           token: 'dfsdfdsf-dsffdfsd-fdsfdsfs'
         })
-      }, 0 * 1000)
+      }, 1 * 1000)
     }).then(response => {
       this.saveToken(response.token)
       this.user.data = response
@@ -37,7 +37,7 @@ export default class AuthService {
           name: 'Mik',
           token: 'dfsdfdsf-dsffdfsd-fdsfdsfs'
         })
-      }, 0 * 1000)
+      }, 1 * 1000)
     }).then(response => {
       this.user.data = response
       return this.user

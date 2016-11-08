@@ -1,0 +1,56 @@
+
+.link {
+  padding: 15px;
+  display: block;
+  border-radius: 0 !important;
+  border: 0;
+}
+
+.gridBody {
+  text-align: center;
+}
+
+.stateBar {
+  margin: 0 auto;
+  width: 60px;
+}
+
+.detail {
+  background: rgba(255, 255, 255, 0.4);
+  color: #555;
+  margin-top: 10px;
+  padding: 7px 0;
+}
+
+.animation {
+  height: 0;
+  opacity: 0.5;
+  overflow: hidden;
+  transition: opacity 0.3s ease-in;
+}
+
+:global(.collapse) {
+  display: block;
+}
+
+.animation:global(.collapsing),
+:global(.in) {
+  height: auto;
+  opacity: 1;
+}
+
+.detail > div {
+  min-height: 200px;
+  padding: 0 7px;
+  width: 20%;
+}
+
+.detail > div:hover {
+  cursor: pointer;
+  transform: scale(1.02);
+  transition: All 0.3s ease-out;
+}
+
+.fail > div {
+  border: 1px solid #d9534f;
+}
