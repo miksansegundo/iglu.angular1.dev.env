@@ -13,10 +13,21 @@ export default window.angular
     controller: class Ctrl {
       constructor () {
         'ngInject'
+        this.json = JSON.stringify(this.list, null, 15)
+      }
+      changeData () {
+        try {
+          this.list = JSON.parse(this.json)
+          this.jsonInvalid = false
+        } catch (error) {
+          this.jsonInvalid = true
+          console.log('The JSON is not valid')
+        }
       }
     },
     template: `
       <div>
+        <h2>List Component</h2>
         <div class="container-fluid">
           <div class="row text-center ${styles.gridHead}">
             <div class="col-md-1">Type</div>
@@ -33,7 +44,11 @@ export default window.angular
         <div class="list-group ${styles.list}">
            <list-item ng-repeat="item in $ctrl.list" item="item"></list-item>
         </div>
-        <pre>List Data: {{ $ctrl.list | json }}</pre>
+        <h2>JSON API Response</h2>
+        <p>The next data structure is resolved for the List Component. You are able to change it here to test the component reactions.</p>
+        <div class="form-group" ng-class="{'has-error': $ctrl.jsonInvalid}">
+            <textarea class="form-control" ng-style="{'width':'100%'}" rows="50" ng-model="$ctrl.json" ng-change="$ctrl.changeData()"></textarea>
+        </div>
       </div>
     `
   }).config(($stateProvider) => {

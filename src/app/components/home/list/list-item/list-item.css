@@ -23,6 +23,7 @@
 }
 
 .animation {
+  background: #f7f5f3;
   height: 0;
   opacity: 0.5;
   overflow: hidden;
