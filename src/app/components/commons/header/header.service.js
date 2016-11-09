@@ -7,15 +7,15 @@ export default class HeaderService {
     return [
       {
         name: 'Home',
-        link: 'home'
+        link: 'home.list'
       },
       {
         name: 'Section 1',
-        link: 'section-one'
+        link: 'sectionOne'
       },
       {
         name: 'Section 2',
-        link: 'section-two'
+        link: 'sectionTwo'
       }
     ]
   }

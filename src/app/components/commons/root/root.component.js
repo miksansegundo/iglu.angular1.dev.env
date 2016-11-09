@@ -28,7 +28,7 @@ export default window.angular
           </div>
         </ui-view>
         <footer>
-            Miguel San Segundo - MIT 2016.
+            Miguel San Segundo - miguelsansegundo@gmail.com - MIT 2016.
         </footer>
       </div>
     `

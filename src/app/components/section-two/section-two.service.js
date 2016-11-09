@@ -1,7 +1,6 @@
-export default class SectionOneService {
+export default class SectionTwoService {
   constructor ($http, $q) {
     'ngInject'
-    // TODO: Add axios.js
     this.$http = $http
     this.$q = $q
   }

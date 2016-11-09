@@ -1,5 +1,5 @@
 import styles from './section-two.css'
-import SectionOneService from './section-one.service.js'
+import SectionTwoService from './section-two.service.js'
 
 export default window.angular
   .module('sectionTwo', ['ui.router'])
@@ -16,7 +16,7 @@ export default window.angular
   })
   .config(($stateProvider) => {
     'ngInject'
-    $stateProvider.state('section-two', {
+    $stateProvider.state('sectionTwo', {
       url: '/section-two',
       component: 'sectionTwo',
       resolve: {

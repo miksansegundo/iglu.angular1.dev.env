@@ -16,10 +16,10 @@ module.exports = (env) => {
   const config = webpackValidator({
     context: resolve('src'),
     cache: false,
-    devtool: ifProd('source-map', 'eval'),
+    devtool: ifProd('source-map', 'inline-source-map'),
     entry: {
       app: './index.js',
-      polyfills: ['picturefill', '../libs/vanilla.helpers.js']
+      polyfills: ['picturefill']
     },
     output: {
       path: resolve('build'),
@@ -110,7 +110,7 @@ module.exports = (env) => {
         }
       }),
       new WebpackMd5Hash(),
-      new WebpackBrowserPlugin(),
+      ifProd(new WebpackBrowserPlugin()),
       new WebpackNotifierPlugin(),
       ifProd(new WebpackShellPlugin({onBuildStart: ['npm run copy:ico'], onBuildEnd: ['npm run clean:files']})),
       // new OfflinePlugin(),

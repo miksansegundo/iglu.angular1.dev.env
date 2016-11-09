@@ -23,7 +23,7 @@ export default class HomeService {
               data: []
             }
           )
-        }, 1 * 1000)
+        }, 0 * 1000)
       }).then(response => {
         this.data = response
         return response
