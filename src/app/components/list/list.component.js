@@ -17,7 +17,7 @@ export default window.angular
       }
       changeData () {
         try {
-          this.list = JSON.parse(this.json)
+          Object.assign(this.list, JSON.parse(this.json))
           this.jsonInvalid = false
         } catch (error) {
           this.jsonInvalid = true
@@ -45,7 +45,7 @@ export default window.angular
            <list-item ng-repeat="item in $ctrl.list" item="item"></list-item>
         </div>
         <h2>JSON API Response</h2>
-        <p>The next data structure is resolved for the List Component. You are able to change it here to test the component reactions.</p>
+        <p>The next data structure is resolved for the List Component. You are able to change some values to test the component reactions.</p>
         <div class="form-group" ng-class="{'has-error': $ctrl.jsonInvalid}">
             <textarea class="form-control" ng-style="{'width':'100%'}" rows="50" ng-model="$ctrl.json" ng-change="$ctrl.changeData()"></textarea>
         </div>

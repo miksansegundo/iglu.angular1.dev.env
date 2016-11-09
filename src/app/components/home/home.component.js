@@ -1,6 +1,6 @@
 import styles from './home.css'
 import HomeService from './home.service.js'
-import List from './list/list.component'
+import List from '../list/list.component'
 
 const name = 'home'
 export default window.angular

@@ -1,9 +1,9 @@
 
 .link {
-  padding: 15px;
-  display: block;
-  border-radius: 0 !important;
   border: 0;
+  border-radius: 0 !important;
+  display: block;
+  padding: 15px;
 }
 
 .gridBody {
