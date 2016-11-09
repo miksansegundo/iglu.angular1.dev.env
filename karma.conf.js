@@ -10,7 +10,7 @@ module.exports = function (config) {
     exclude: [
     ],
     preprocessors: {
-      './spec.bundle.js': ['webpack', 'sourcemap']
+      './test/spec.bundle.js': ['webpack', 'sourcemap']
     },
     webpack: webpackConfig,
     webpackServer: {

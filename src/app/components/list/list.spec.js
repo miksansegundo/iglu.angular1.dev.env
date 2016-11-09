@@ -1,6 +1,6 @@
 
 import List from './list.component'
-const listJSON = require('../../../../db.json')
+import listJSON from '../../../../test/db.json'
 
 describe('List Component', () => {
   let ListService
@@ -53,13 +53,13 @@ describe('List Component', () => {
   })
 
   describe('Bindings', () => {
-    it('should have a binding on list property', function () {
+    it('should has a binding on list property', function () {
       expect($ctrl.list).to.be.an('array')
     })
   })
 
   describe('Controller', () => {
-    it('should have a json property', function () {
+    it('should has a json property', function () {
       expect($ctrl.json).to.be.an('string')
     })
     it('should has the constructor', function () {

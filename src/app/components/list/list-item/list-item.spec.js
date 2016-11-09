@@ -1,6 +1,6 @@
 import ListService from '../list.service'
 import listItem from './list-item.component'
-const listJSON = require('../../../../../db.json')
+const listJSON = require('../../../../../test/db.json')
 
 describe('ListItem Component', () => {
   let $ctrl
@@ -44,7 +44,7 @@ describe('ListItem Component', () => {
   })
 
   describe('Bindings', () => {
-    it('should have a binding on item property', function () {
+    it('should has a binding on item property', function () {
       expect($ctrl.item).to.be.an('object')
     })
   })
@@ -53,22 +53,22 @@ describe('ListItem Component', () => {
     it('should has the constructor', function () {
       expect($ctrl.constructor).to.be.an('function')
     })
-    it('should have a typoFirewall property', function () {
+    it('should has a typoFirewall property', function () {
       expect($ctrl.typoFirewall).to.be.equal('Firewall')
     })
-    it('should have a typoBuild property', function () {
+    it('should has a typoBuild property', function () {
       expect($ctrl.typoBuild).to.be.equal('Build')
     })
-    it('should have a pendingCode property', function () {
+    it('should has a pendingCode property', function () {
       expect($ctrl.pendingCode).to.be.equal(1)
     })
-    it('should have a runningCode property', function () {
+    it('should has a runningCode property', function () {
       expect($ctrl.runningCode).to.be.equal(2)
     })
-    it('should have a completedCode property', function () {
+    it('should has a completedCode property', function () {
       expect($ctrl.completedCode).to.be.equal(3)
     })
-    it('should have a rejectedCode property', function () {
+    it('should has a rejectedCode property', function () {
       expect($ctrl.rejectedCode).to.be.equal(4)
     })
     it('should expose the method getColor', function () {
