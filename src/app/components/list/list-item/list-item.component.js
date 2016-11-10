@@ -1,8 +1,8 @@
 import styles from './list-item.css'
-import MetricsBox from './metrics-box/metrics-box.component'
-import BuildBox from './build-box/build-box.component'
-import TestBox from './test-box/test-box.component'
-import ResultBox from './result-box/result-box.component'
+import MetricsBox from '../list-item/metrics-box/metrics-box.component'
+import BuildBox from '../list-item/build-box/build-box.component'
+import TestBox from '../list-item/test-box/test-box.component'
+import ResultBox from '../list-item/result-box/result-box.component'
 
 const name = 'listItem'
 export default window.angular
@@ -22,6 +22,7 @@ export default window.angular
         this.runningCode = 2
         this.completedCode = 3
         this.rejectedCode = 4
+        this.isPending = (this.item.state.code === 1)
       }
       getColor (state) {
         const stateCode = state.code.toString()
@@ -38,7 +39,7 @@ export default window.angular
         return (boxState.code === this.rejectedCode)
       }
       emitOnCollapse () {
-        if (this.isPending()) {
+        if (this.isPending) {
           return false
         }
         const id = this.isOpened() ? null : this.item.id
@@ -50,16 +51,12 @@ export default window.angular
       isBoxEnabled (state) {
         return (state.code > 1)
       }
-      isPending () {
-        return (this.item.state.code === 1)
-      }
-
     },
     template: `
       <a href="#"
         class="list-group-item ${styles.link}"
         ng-class="{
-          'disabled': $ctrl.isPending(),
+          'disabled': $ctrl.isPending,
           'list-group-item-info': $ctrl.item.state.code === $ctrl.runningCode,
           'list-group-item-success': $ctrl.item.state.code === $ctrl.completedCode,
           'list-group-item-danger': $ctrl.item.state.code === $ctrl.rejectedCode

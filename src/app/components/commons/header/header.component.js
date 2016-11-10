@@ -33,7 +33,7 @@ export default window.angular
       }
       onLogout () {
         this.Auth.logout()
-        this.$state.go('home.list')
+        this.$state.go('home')
       }
       onLogin ($event) {
         this.Auth.login($event).then(user => {
