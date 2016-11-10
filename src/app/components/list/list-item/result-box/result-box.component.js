@@ -36,7 +36,7 @@ export default window.angular
                   '${styles.acepted}': $ctrl.data.succeed,
                   '${styles.rejected}': !$ctrl.data.succeed
                 }">{{ $ctrl.data.name }}</strong>
-                <select class="${styles.select}" ng-if="$ctrl.data.succeed" ng-model="$ctrl.env"
+                <select class="${styles.select}" ng-if="$ctrl.data.succeed && $ctrl.data.environments" ng-model="$ctrl.env"
                     ng-options="option.id as option.name for option in $ctrl.data.environments track by option.id">
                 </select>
                 <button class="btn btn-lg btn-primary" ng-if="$ctrl.data.succeed">
