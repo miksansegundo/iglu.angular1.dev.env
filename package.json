@@ -4,7 +4,7 @@
   "description": "Node.js Development environment at Iglu.net to develop Angular 1 Components-based Web Apps with ES2015 language and Standard style. CSS Modules & PostCSS.",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --env.prod -p",
+    "build": "concurrently \"npm run server\" \"webpack --env.prod -p\"",
     "prebuild": "npm run clean:build",
     "postbuild:dev": "opn http://localhost:8080",
     "build:dev": "concurrently \"npm run server\" \"webpack-dev-server --env.dev\"",
